@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
     <link rel="stylesheet" href="style.css">
-    
-     <link rel="stylesheet" href="order2.css">
-    
+    <link rel="stylesheet" href="order2.css">
 </head>
 <body>
     <header>
@@ -18,71 +16,71 @@
         <section id="order-section">
             <h2 class="headcenter">Complete Your Order</h2>
             <form id="custom-form" 
-      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSevCjhUIoCYPG8CG873sHqhQOYT4OwZSg8ge9RnzxfwyTCHjQ/formResponse" 
-      method="POST" 
-      target="hidden_iframe">
-
+                action="https://docs.google.com/forms/d/e/1FAIpQLSexIThQrwIiuAP5sPDzuEKuQTpPkMp3v5xVBwFLNqrgZ3jlEw/formResponse"
+                method="POST"
+                target="hidden_iframe">
 
                 <label for="userName">Your Name:</label>
-                <input type="text" id="userName" name="entry.1110349223" placeholder="Enter your name" required>
+                <input type="text" id="userName" name="entry.586157292" placeholder="Enter your name" required>
 
                 <label for="address">Your Address:</label>
-                <textarea id="address" name="entry.1317313478" placeholder="Enter your address" rows="3" required></textarea>
+                <textarea id="address" name="entry.865340220" placeholder="Enter your address" rows="3" required></textarea>
 
                 <label for="mobile">Mobile Number:</label>
-                <input type="number" id="mobile" name="entry.1854760355" placeholder="Enter your mobile number" required>
+                <input type="number" id="mobile" name="entry.37859679" placeholder="Enter your mobile number" required>
 
                 <label for="productName">Product Name:</label>
-                <input type="text" id="productName" name="entry.269780076" readonly>
-                
+                <input type="text" id="productName" name="entry.384081932" readonly>
+
                 <label for="bottleOffer">Stylish Bottle:</label>
-                <select id="bottleOffer"  onchange="showbottlepricefun()" name="entry.506509292">
+                <select id="bottleOffer" onchange="showbottlepricefun()" name="entry.2007186184">
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
                 </select>
+
                 <div id="showbottleprice">
-                <label for="bottlePrice">Stylish Bottle Price:</label>
-                <select id="bottlePrice" onchange="calculateSum()" name="entry.1710796685">
-                    <option value="0">empty</option>
-                    <option value="130">3ml (130 Rs)</option>
-                    <option value="180">6ml (180 Rs)</option>
-                    <option value="230">12ml (230 Rs)</option>
-                </select>
+                    <label for="bottlePrice">Stylish Bottle Price:</label>
+                    <select id="bottlePrice" onchange="calculateSum()" name="entry.321795869">
+                        <option value="0">empty</option>
+                        <option value="130">3ml (130 Rs)</option>
+                        <option value="180">6ml (180 Rs)</option>
+                        <option value="230">12ml (230 Rs)</option>
+                    </select>
                 </div>
 
                 <label for="price">Price (Rs):</label>
-                <input type="number" id="price" name="entry.2133492647" readonly>
+                <input type="number" id="price" name="entry.400" readonly>
 
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="entry.171744850" min="1" value="1" required>
+                <input type="number" id="quantity" name="entry.1177976082" min="1" value="1" required>
 
                 <label for="totalPrice">Total Price (Rs):</label>
-                <input type="number"  id="totalPrice" name="entry.1229946366" readonly>
+                <input type="number" id="totalPrice" name="entry.2037355945" readonly>
 
                 <label for="orderDate">Order Date:</label>
-                <input type="date" id="orderDate" name="entry.1580478863" required>
-                
+                <input type="date" id="orderDate" name="entry.780854365" required readonly>
+
                 <label for="paymentMethod">Payment Method:</label>
-                <select id="paymentMethod"  onchange="showmobilenumber()" name="entry.175859627">
-                    <option value="atdelevery">Payment on delivery</option>
-                    <option value="online">Online payment</option>
+                <select id="paymentMethod" onchange="showmobilenumber()" name="entry.2134052494">
+                    <option value="Payment on delivery">Payment on delivery</option>
+                    <option value="Online payment">Online payment</option>
                 </select>
+
                 <div id="onlinepaymentnumber">
-
-                    <h5 style="color: black; font-size: 15px;" >Easypaisa & Jazzcash at</h5>
-                    <h5 style="color: black; font-size: 15px;" >+923334344513</h5>
-
+                    <h5 style="color: black; font-size: 15px;">Easypaisa & Jazzcash at</h5>
+                    <h5 style="color: black; font-size: 15px;">+923334344513</h5>
                 </div>
+
                 <button type="submit">Submit</button>
             </form>
+
             <div id="confirmation-message" style="display: none; text-align: center; margin-top: 20px;">
                 <h2>Order Confirmed ✅</h2>
                 <p>Thanks for shopping with us!</p>
                 <a href="index.html">Go Back to Homepage</a>
             </div>
+
             <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
-
-
         </section>
     </main>
 
@@ -91,96 +89,65 @@
     </footer>
 
     <script>
-        let submitted = false; // Declare globally
+        const params = new URLSearchParams(window.location.search);
+        const productName = params.get('product');
+        const price = params.get('price');
+        // Set today's date in the date input
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('orderDate').value = today;
 
-// Extract URL parameters and prefill the form
-const params = new URLSearchParams(window.location.search);
-const productName = params.get('product');
-const price = params.get('price');
+        document.getElementById('productName').value = productName || "N/A";
+        document.getElementById('price').value = price || "0";
 
-document.getElementById('productName').value = productName || "N/A";
-document.getElementById('price').value = price || "0";
+        const quantityInput = document.getElementById('quantity');
+        const totalPriceInput = document.getElementById('totalPrice');
+        const bottleOffer = document.getElementById('bottleOffer');
+        const bottlePrice = document.getElementById('bottlePrice');
+        const paymentMethod = document.getElementById('paymentMethod');
 
-const quantityInput = document.getElementById('quantity');
-const totalPriceInput = document.getElementById('totalPrice');
-const bottleOffer = document.getElementById('bottleOffer');
-const bottlePrice = document.getElementById('bottlePrice');
-const paymentMethod = document.getElementById('paymentMethod');
+        function updateTotalPrice() {
+            const quantity = parseInt(quantityInput.value, 10) || 1;
+            totalPriceInput.value = quantity * parseFloat(price || "0");
+        }
 
-// Set default values for dropdowns
-if (!bottleOffer.value) bottleOffer.value = "No Offer";
-if (!bottlePrice.value) bottlePrice.value = "3ml (130 Rs)";
-if (!paymentMethod.value) paymentMethod.value = "Online Payment";
+        quantityInput.addEventListener('input', updateTotalPrice);
+        updateTotalPrice();
 
-// Calculate total price
-function updateTotalPrice() {
-    const quantity = parseInt(quantityInput.value, 10) || 1;
-    totalPriceInput.value = quantity * parseFloat(price || "0");
-}
+        function showbottlepricefun() {
+            var needbottle = bottleOffer.value;
+            var bottlepriceDiv = document.getElementById('showbottleprice');
+            if (needbottle === 'yes') {
+                bottlepriceDiv.style.display = 'block';
+            } else {
+                bottlepriceDiv.style.display = 'none';
+            }
+        }
 
-quantityInput.addEventListener('input', updateTotalPrice);
-updateTotalPrice();
+        function showmobilenumber() {
+            var payment = paymentMethod.value;
+            var numbershow = document.getElementById('onlinepaymentnumber');
+            if (payment === 'Online payment') {
+                numbershow.style.display = 'block';
+            } else {
+                numbershow.style.display = 'none';
+            }
+        }
 
-function showbottlepricefun(){
-    var needbottle = document.getElementById('bottleOffer').value;
-    var bottleprice = document.getElementById('showbottleprice');
-    if(needbottle === 'yes'){
-        bottleprice.style.display = 'block';
-    } else {
-        bottleprice.style.display = 'none';
-    }
-}
-function showmobilenumber(){
-    var paymentMethod = document.getElementById('paymentMethod').value;
-    var numbershow = document.getElementById('onlinepaymentnumber');
-    if(paymentMethod == 'online' ){
-        numbershow.style.display = 'block';
-    }else{
-        numbershow.style.display = 'none';
-    }
-}
+        function calculateSum() {
+            let num1 = parseFloat(document.getElementById('bottlePrice').value) || 0;
+            let num2 = parseFloat(document.getElementById('totalPrice').value) || 0;
+            document.getElementById('totalPrice').value = num1 + num2;
+        }
 
-
-function calculateSum(){
-    let num1 = document.getElementById('bottlePrice').value;
-    let num2 = document.getElementById('totalPrice').value;
-    num1 = parseFloat(num1);
-    num2 = parseFloat(num2);
-    let sum = num1+num2;
-    document.getElementById('totalPrice').value= sum;
-}
-
-
-// Handle form submission properly
-document.getElementById("custom-form").onsubmit = function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Ensure all required dropdowns are selected
-    if (!bottleOffer.value || !bottlePrice.value || !paymentMethod.value) {
-        alert("Please select all required fields before submitting.");
-        return false;
-    }
-
-    submitted = true;
-
-    // Submit the form programmatically using an iframe
-    this.target = "hidden_iframe"; // Submits the form in the hidden iframe
-    this.submit();
-
-    // **Fix: Show Confirmation Message Immediately**
-    setTimeout(() => {
-        document.getElementById("custom-form").style.display = "none"; // Hide the form
-        document.getElementById("confirmation-message").style.display = "block"; // Show confirmation message
-    }, 500); // Wait 0.5s for submission to complete
-};
-
-
-
+        document.getElementById("custom-form").onsubmit = function(event) {
+            event.preventDefault();
+            this.target = "hidden_iframe";
+            this.submit();
+            setTimeout(() => {
+                document.getElementById("custom-form").style.display = "none";
+                document.getElementById("confirmation-message").style.display = "block";
+            }, 500);
+        };
     </script>
-    
-
-    
-    
 </body>
 </html>
-
