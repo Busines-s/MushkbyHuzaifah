@@ -61,13 +61,19 @@
                 <input type="date" id="orderDate" name="entry.780854365" required readonly>
 
                 <label for="paymentMethod">Payment Method:</label>
-                <select id="paymentMethod" onchange="showmobilenumber()" name="entry.2134052494">
-                    <option value="Payment on delivery">Payment on delivery</option>
+                <select id="paymentMethod" onchange="handlePaymentMethodChange()" name="entry.2134052494">
+                    <option value="" disabled selected>Select payment method</option>
+                    <option value="Payment on delivery" disabled>Payment on delivery (Currently Unavailable)</option>
                     <option value="Online payment">Online payment</option>
                 </select>
+                
+                <!-- <select id="paymentMethod" onchange="showmobilenumber()" name="entry.2134052494">
+                    <option value="Payment on delivery">Payment on delivery</option>
+                    <option value="Online payment">Online payment</option>
+                </select> -->
 
                 <div id="onlinepaymentnumber">
-                    <h5 style="color: black; font-size: 15px;">Easypaisa & Jazzcash at</h5>
+                    <h5 style="color: black; font-size: 15px;">Jazzcash at</h5>
                     <h5 style="color: black; font-size: 15px;">+923334344513</h5>
                 </div>
 
@@ -122,16 +128,28 @@ document.getElementById('orderDate').value = today;
                 bottlepriceDiv.style.display = 'none';
             }
         }
+        function handlePaymentMethodChange() {
+    var payment = paymentMethod.value;
+    var numbershow = document.getElementById('onlinepaymentnumber');
+    if (payment === 'Online payment') {
+        numbershow.style.display = 'block';
+    } else {
+        numbershow.style.display = 'none';
+        alert("Payment on delivery is currently unavailable. Please use online payment.");
+        paymentMethod.value = ""; // Reset to default
+    }
+}
 
-        function showmobilenumber() {
-            var payment = paymentMethod.value;
-            var numbershow = document.getElementById('onlinepaymentnumber');
-            if (payment === 'Online payment') {
-                numbershow.style.display = 'block';
-            } else {
-                numbershow.style.display = 'none';
-            }
-        }
+
+        // function showmobilenumber() {
+        //     var payment = paymentMethod.value;
+        //     var numbershow = document.getElementById('onlinepaymentnumber');
+        //     if (payment === 'Online payment') {
+        //         numbershow.style.display = 'block';
+        //     } else {
+        //         numbershow.style.display = 'none';
+        //     }
+        // }
 
         function calculateSum() {
             let num1 = parseFloat(document.getElementById('bottlePrice').value) || 0;
