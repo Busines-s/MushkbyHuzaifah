@@ -129,11 +129,11 @@ document.getElementById('orderDate').value = today;
             }
         }
         function handlePaymentMethodChange() {
-    var payment = paymentMethod.value;
-    var numbershow = document.getElementById('onlinepaymentnumber');
-    if (payment === 'Online payment') {
-        numbershow.style.display = 'block';
-    } else {
+            var payment = paymentMethod.value;
+            var numbershow = document.getElementById('onlinepaymentnumber');
+        if (payment === 'Online payment') {
+            numbershow.style.display = 'block';
+        } else {
         numbershow.style.display = 'none';
         alert("Payment on delivery is currently unavailable. Please use online payment.");
         paymentMethod.value = ""; // Reset to default
