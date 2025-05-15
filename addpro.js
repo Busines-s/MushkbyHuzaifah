@@ -27,7 +27,7 @@ const classicProducts = [
   { name: "Havoc", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Havoe.png" },
 ];
 const casualProducts = [
-  { name: "white oud", price3ml: 160, price6ml: 160, price12ml: 160, img: "img/casual/whiteoud.jfif" },
+  { name: "white oud", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/whiteoud.jfif" },
   { name: "Dunhil Desire", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/dunhil.jfif" },
   { name: "soft", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/soft.png" },
   { name: "Ghulaf-e-kaaba", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/ghulaf.jfif" },
