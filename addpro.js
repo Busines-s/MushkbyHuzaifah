@@ -1,6 +1,6 @@
 
 const premiumProducts = [
-
+   {name: "Nostrademis",price12ml: 1200,price25ml: 2400,price50ml: 4500, img: "img/premium/nostra.jpg",customSizes: true },
   { name: "oud aromatic",        price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
   { name: "silk musk",        price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
   { name: "musk-ul-hind S",        price3ml:750 , price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
@@ -36,24 +36,37 @@ const casualProducts = [
 ];
 
 
-
 function createProductCard(product) {
-  return `
-    <div class="product">
-      <img src="${product.img}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      
+  let dropdownHTML = '';
+
+  if (product.customSizes) {
+    dropdownHTML = `
+      <select class="price-dropdown">
+        <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
+        <option value="${product.price25ml}">25ml - Rs ${product.price25ml}</option>
+        <option value="${product.price50ml}">50ml - Rs ${product.price50ml}</option>
+      </select>
+    `;
+  } else {
+    dropdownHTML = `
       <select class="price-dropdown">
         <option value="${product.price3ml}">3ml - Rs ${product.price3ml}</option>
         <option value="${product.price6ml}">6ml - Rs ${product.price6ml}</option>
         <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
       </select>
+    `;
+  }
 
+  return `
+    <div class="product">
+      <img src="${product.img}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      ${dropdownHTML}
       <button onclick="redirectToOrderPageWithDropdown('${product.name}')">Order Now</button>
-
     </div>
   `;
 }
+
 function redirectToOrderPage(productName, price) {
   const url = `order.html?product=${encodeURIComponent(productName)}&price=${price}`;
   window.location.href = url;
