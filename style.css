@@ -228,14 +228,32 @@ footer {
     margin-bottom: 10px;
 }
 
-.footer-section ul li a {
-    color: #ccc;
-    font-size: 0.95rem;
-}
 
-.footer-section ul li a:hover {
-    color: #d4af37;
-}
+ .footer-section ul li a {
+            position: relative;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: #ccc;
+            
+            overflow: hidden;
+        }
+
+        /* Yellow bottom border effect */
+       .footer-section ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px; /* Thickness of the line */
+            background-color: rgb(233, 233, 119);
+            transition: width 0.4s ease-in-out;
+        }
+
+        /* Hover effect */
+        .footer-section ul li a:hover::after {
+            width: 100%;
+        }
 
 .social-media {
     display: flex;
