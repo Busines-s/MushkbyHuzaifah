@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,22 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
-    <header>
+    <!-- <header>
         <h1>Contact Us</h1>
+    </header> -->
+    <header id="mainHeader">
+        <div class="header-content"> <img class="logo" src="img/logo/logo.jpg" alt="logo of website">
+            <h1 class="header-h1">Mushk by Huzaifah</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
@@ -20,9 +34,8 @@
 
             <form id="contactForm"
                 action="https://docs.google.com/forms/d/e/1FAIpQLSdZmc7nCmprsHJthxIkmVgMzhFpTXc8p1sfgPY9KbHIpSXzIA/formResponse"
-                method="POST"
-                target="hidden_iframe">
-                
+                method="POST" target="hidden_iframe">
+
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="entry.494759788" placeholder="Enter your name" required>
 
@@ -30,7 +43,8 @@
                 <input type="email" id="email" name="entry.1613259591" placeholder="Enter your email" required>
 
                 <label for="message">Your Message:</label>
-                <textarea id="message" name="entry.810259231" rows="5" placeholder="Type your message here" required></textarea>
+                <textarea id="message" name="entry.810259231" rows="5" placeholder="Type your message here"
+                    required></textarea>
 
                 <button type="submit">Send Message</button>
             </form>
@@ -43,12 +57,24 @@
             </div>
         </section>
     </main>
-        
+
     <footer>
-        <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>        
+        <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>
     </footer>
 
     <script>
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById("mainHeader");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.top = "-150px"; // hide on scroll down
+            } else {
+                header.style.top = "0"; // show on scroll up
+            }
+            lastScrollY = window.scrollY;
+        });
+
         document.getElementById('contactForm').onsubmit = function () {
             this.target = "hidden_iframe"; // ensure hidden submit
             setTimeout(() => {
@@ -58,4 +84,5 @@
         };
     </script>
 </body>
+
 </html>

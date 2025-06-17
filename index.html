@@ -55,13 +55,13 @@
 </head>
 
 <body>
-    <header>
+    <header id="mainHeader">
         <div class="header-content"> <img class="logo" src="img/logo/logo.jpg" alt="logo of website">
             <h1 class="header-h1">Mushk by Huzaifah</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="#products">Products</a></li>
+                <li><a href="#pro">Products</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
@@ -69,26 +69,40 @@
     </header>
 
     <main>
-        <section id="intro">
+        <section class="banner">
+  <div class="banner-content">
+    <h2>Welcome to Mushk by Huzaifah</h2>
+    <p>
+      At Mushk, we specialize in premium quality fragrances and personal care products.
+      Our goal is to deliver excellence in every bottle—whether it’s our signature scents,
+      luxurious oils, or handcrafted products. Discover elegance and tradition in every drop.
+    </p>
+    <a href="#premium-product" class="banner-btn">Explore Products</a>
+
+  </div>
+</section>
+
+        <!-- <section id="intro">
+            
             <div class="intro-content">
 
                 <button onclick="window.location.href='#premium-product'">Shop Now</button>
             </div>
-        </section>
+        </section> -->
         <div class="qualitysection">
             <h2>Quality Section</h2>
-            <a class="qualitysection-a" href="#premium-product">Premium Product</a>
-            <a class="qualitysection-a" href="#classic-product">Classic Product</a>
-            <a class="qualitysection-a" href="#casual-product">Casual Product</a>
+            <a class="qualitysection-a" href="#premium-product">Premium scents</a>
+            <a class="qualitysection-a" href="#classic-product">Classic scents</a>
+            <a class="qualitysection-a" href="#casual-product">Casual scents</a>
         </div>
 
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search perfumes..." />
         </div>
-
+        <section id="pro">
         <section id="premium-product">
-            <h2 class="product-catagories">Premium Products</h2>
+            <h2 class="product-catagories">Premium scents</h2>
             <div class="product-container">
                 <button class="scroll-button left premium">⮜</button>
                 <div class="product-list" id="premiumList">
@@ -102,7 +116,7 @@
         <hr>
         <!-- Updated Classic Product Section -->
         <section id="classic-product">
-            <h2 class="product-catagories">Classic Products</h2>
+            <h2 class="product-catagories">Classic scents</h2>
             <div class="product-container">
                 <button class="scroll-button left classic">⮜</button>
                 <div class="product-list" id="classicList">
@@ -116,7 +130,7 @@
 
         <!-- New Casual Product Section -->
         <section id="casual-product">
-            <h2 class="product-catagories">Casual Products</h2>
+            <h2 class="product-catagories">Casual scents</h2>
             <div class="product-container">
                 <button class="scroll-button left casual">⮜</button>
                 <div class="product-list" id="casualList">
@@ -127,7 +141,7 @@
             <button class="view-more-btn" data-target="casualList">view more</button>
             <hr>
         </section>
-
+        </section>
         <section id="about">
             <div class="about-us-container">
                 <h1>About Us</h1>
@@ -212,6 +226,19 @@
 
         <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>
     </footer>
+    <script>
+  let lastScrollY = window.scrollY;
+  const header = document.getElementById("mainHeader");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > lastScrollY) {
+      header.style.top = "-150px"; // hide on scroll down
+    } else {
+      header.style.top = "0"; // show on scroll up
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>
 
 
     <script src="addpro.js"></script>

@@ -35,20 +35,25 @@ a:hover {
   }
 /* Header */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #000;
     padding: 20px;
     border-bottom: 1px solid #444;
+    z-index: 1000;
+    transition: top 0.3s ease;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
 .header-h1 {
-
     font-size: 25px;
     font-weight: 600;
     color: #d4af37;
@@ -56,24 +61,59 @@ header {
     flex-grow: 1;
 }
 
+.logo {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover border */
+nav ul li a:hover {
+    border-color: #d4af37;
+}
+
+
+/* Mobile Responsive */
 @media (max-width: 430px) {
     .header-content {
         flex-direction: column;
         align-items: center;
     }
+
     .header-h1 {
-        
         font-size: 15px;
-        
     }
+
     a {
         font-size: 12px;
     }
-    nav ul {
-        display: flex;
-        flex-direction: row;  /* Ensure the nav items stay in a row */
-        list-style: none;
 
+    nav ul {
+        flex-direction: row;
         gap: 10px;
         margin-top: 0;
         align-items: center;
@@ -83,80 +123,67 @@ header {
     nav ul li {
         display: inline-block;
     }
-    
-}
-.logo {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
-/* Navigation */
-nav ul {
-    display: flex;
-    list-style: none;
-    /* gap: 25px; */
-    gap: 15px;
-    margin-top: 12px;
-}
-
-nav ul li a {
-    font-weight: 500;
-    padding: 8px 12px;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    border-color: #d4af37;
-}
-
-
-#intro {
-    
-
-    padding-top: 25px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 10px;
+/* === Banner Section === */
+.banner {
+    margin-top: 100px;
+    background: linear-gradient(to right, #111, #222);
+    color: #FFD700;
+    padding: 60px 20px;
     text-align: center;
+    border-bottom: 3px solid #FFD700;
 }
 
+.banner-content {
+    max-width: 800px;
+    margin: auto;
+}
 
-.intro-content h2 {
-    font-size: 2.5rem;
-    color: #fff;
+.banner h2 {
+    font-size: 2.5em;
     margin-bottom: 20px;
-}
-
-.intro-content p {
-    max-width: 600px;
-    margin: 0 auto 30px;
-    font-size: 1.2rem;
-}
-
-.intro-content button {
-    background-color: #d4af37;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
     font-weight: bold;
-    border-radius: 30px;
-    color: #111;
-    cursor: pointer;
-    transition: 0.3s ease;
 }
 
-.intro-content button:hover {
-    background-color: #fff;
+.banner p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #f1f1f1;
+    margin-bottom: 30px;
+}
+
+.banner-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #FFD700;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.banner-btn:hover {
+    background-color: #e6be00;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .banner h2 {
+        font-size: 1.8em;
+    }
+
+    .banner p {
+        font-size: 1em;
+    }
 }
 
 /* Quality Section */
 .qualitysection {
     text-align: center;
     padding: 10px 10px;
+    margin-top: 80px;
 }
 
 .qualitysection h2 {
@@ -204,6 +231,7 @@ nav ul li a:hover {
 }
 
 /* Footer */
+/* Footer */
 footer {
     background-color: #111;
     padding: 40px 20px;
@@ -212,6 +240,13 @@ footer {
     gap: 25px;
     color: #ccc;
     border-top: 1px solid #444;
+    justify-items: center; /* Center all grid items horizontally */
+    text-align: center; /* Center text inside each section */
+}
+
+.footer-section {
+    max-width: 250px;
+    width: 100%;
 }
 
 .footer-section h3 {
@@ -222,46 +257,52 @@ footer {
 
 .footer-section ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {
     margin-bottom: 10px;
 }
 
+.footer-section ul li a {
+    position: relative;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: #ccc;
+    overflow: hidden;
+}
 
- .footer-section ul li a {
-            position: relative;
-            font-size: 0.95rem;
-            text-decoration: none;
-            color: #ccc;
-            
-            overflow: hidden;
-        }
+/* Yellow bottom border effect */
+.footer-section ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: rgb(233, 233, 119);
+    transition: width 0.4s ease-in-out;
+}
 
-        /* Yellow bottom border effect */
-       .footer-section ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px; /* Thickness of the line */
-            background-color: rgb(233, 233, 119);
-            transition: width 0.4s ease-in-out;
-        }
+.footer-section ul li a:hover::after {
+    width: 100%;
+}
 
-        /* Hover effect */
-        .footer-section ul li a:hover::after {
-            width: 100%;
-        }
-
+/* Social media icons */
 .social-media {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.social-media li {
+    list-style: none;
 }
 
 .social-media a {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #ccc;
     transition: 0.3s ease;
 }
@@ -270,18 +311,25 @@ footer {
     color: #d4af37;
 }
 
+/* Footer bottom text */
 footer p {
     text-align: center;
     margin-top: 30px;
     grid-column: 1 / -1;
     font-size: 0.85rem;
     color: #888;
+    width: 100%;
 }
+
+/* Responsive for small screens */
 @media (max-width: 430px) {
     footer {
-      text-align: center;
-      justify-items: center;
-      grid-template-columns: 1fr; /* single column layout */
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
     }
-  }
-  
+
+    .footer-section {
+        max-width: 100%;
+    }
+}

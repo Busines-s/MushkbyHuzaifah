@@ -1,38 +1,35 @@
 
 const premiumProducts = [
-   {name: "Nostrademis",price12ml: 1200,price25ml: 2400,price50ml: 4500, img: "img/premium/nostra.jpg",customSizes: true },
-  { name: "oud aromatic",        price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
-  { name: "silk musk",        price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
-  { name: "musk-ul-hind S",        price3ml:750 , price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
-  { name: "Ameer-ul-oud",     price3ml: 270, price6ml: 550, price12ml: 1000, img: "img/premium/Ameer-ul-oud.jpeg" },
-  { name: "jannan",        price3ml:250 , price6ml: 500, price12ml: 900, img: "img/premium/jannan.jpeg" },
-  { name: "versache pink",        price3ml:250 , price6ml: 500, price12ml: 900, img: "img/premium/versace.jpeg" },
-  { name: "oud-e-junaid",     price3ml: 260, price6ml: 520, price12ml: 950, img: "img/premium/oud-e-junaid.jpeg" },
-  { name: "purple oud",        price3ml:300 , price6ml: 600, price12ml: 1200, img: "img/premium/purpleoud.jpeg" },
-  { name: "musk-ul-hind ",        price3ml:450 , price6ml: 900, price12ml: 1700, img: "img/premium/muskulhind.jpg" },
-  { name: "Bom Shell",        price3ml:230 , price6ml: 450, price12ml: 850, img: "img/premium/bomshell.png" },
-  { name: "Armani Mania",        price3ml:250 , price6ml: 500, price12ml: 1000, img: "img/premium/armani.png" },
-  { name: "Vanila 28",        price3ml:300 , price6ml: 600, price12ml: 1200, img: "img/premium/vanila.jpeg" },
-  { name: "Urba pura",        price3ml:250 , price6ml: 500, price12ml: 900, img: "img/premium/urbapura.png" },
-
-
+  { name: "Nostrademis", price12ml: 1200, price25ml: 2400, price50ml: 4500, img: "img/premium/nostra.jpg", customSizes: true },
+  { name: "Oud Aromatic", price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
+  { name: "Silk Musk", price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
+  { name: "Musk-ul-Hind S", price3ml: 750, price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
+  { name: "Ameer-ul-Oud", price3ml: 270, price6ml: 550, price12ml: 1000, img: "img/premium/Ameer-ul-oud.jpeg" },
+  { name: "Jannan", price3ml: 250, price6ml: 500, price12ml: 900, img: "img/premium/jannan.jpeg" },
+  { name: "Versache Pink", price3ml: 250, price6ml: 500, price12ml: 900, img: "img/premium/versace.jpeg" },
+  { name: "Oud-e-Junaid", price3ml: 260, price6ml: 520, price12ml: 950, img: "img/premium/oud-e-junaid.jpeg" },
+  { name: "Purple Oud", price3ml: 300, price6ml: 600, price12ml: 1200, img: "img/premium/purpleoud.jpeg" },
+  { name: "Musk-ul-Hind", price3ml: 450, price6ml: 900, price12ml: 1700, img: "img/premium/muskulhind.jpg" },
+  { name: "Bombshell", price3ml: 230, price6ml: 450, price12ml: 850, img: "img/premium/bomshell.png" },
+  { name: "Armani Mania", price3ml: 250, price6ml: 500, price12ml: 1000, img: "img/premium/armani.png" },
+  { name: "Vanilla 28", price3ml: 300, price6ml: 600, price12ml: 1200, img: "img/premium/vanila.jpeg" },
+  { name: "Urba Pura", price3ml: 250, price6ml: 500, price12ml: 900, img: "img/premium/urbapura.png" },
 ];
 const classicProducts = [
   { name: "Husne Yousaf", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/husneyousaf.jpeg" },
   { name: "Gucci Rush", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/gucchirash.jpeg" },
   { name: "Ghulaf-e-Kaaba", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Ghulaf-e-Kaaba.jpeg" },
-  { name: "Nostrademis(N)", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/nostrademis.png" },
+  { name: "Nostrademis (N)", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/nostrademis.png" },
   { name: "Formation", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Formatia.png" },
   { name: "Sabaya", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/sabaya.jpeg" },
   { name: "Havoc", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Havoe.png" },
 ];
 const casualProducts = [
-  { name: "white oud", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/whiteoud.jfif" },
+  { name: "White Oud", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/whiteoud.jfif" },
   { name: "Dunhil Desire", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/dunhil.jfif" },
-  { name: "soft", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/soft.png" },
-  { name: "Ghulaf-e-kaaba", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/ghulaf.jfif" },
+  { name: "Soft", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/soft.png" },
+  { name: "Ghulaf-e-Kaaba", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/ghulaf.jfif" },
   { name: "Sabaya", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/sabaya.jfif" },
-  
 ];
 
 
