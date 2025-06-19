@@ -5,6 +5,43 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+#autoTypeText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  /* color: #f9d372; */
+  color: white;
+  text-shadow: 0 0 5px rgba(249, 211, 114, 0.5),
+               0 0 10px rgba(249, 211, 114, 0.3);
+  animation: softGlow 2s ease-in-out infinite;
+  margin: 20px auto;
+  max-width: 90%;
+  text-align: center;
+  white-space: normal;         /* Allow wrapping */
+  word-wrap: break-word;       /* Support older browsers */
+  overflow-wrap: break-word;   /* Recommended for modern browsers */
+  border-right: none;          /* optional, you can remove the cursor effect on wrap */
+}
+@media (max-width: 480px) {
+  #autoTypeText {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes softGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(249, 211, 114, 0.5),
+                 0 0 10px rgba(249, 211, 114, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(249, 211, 114, 0.8),
+                 0 0 14px rgba(249, 211, 114, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(249, 211, 114, 0.5),
+                 0 0 10px rgba(249, 211, 114, 0.3);
+  }
+}
 
 body {
     background-color: #111;

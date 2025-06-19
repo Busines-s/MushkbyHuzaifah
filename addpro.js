@@ -1,6 +1,6 @@
 
 const premiumProducts = [
-  { name: "Nostrademis", price12ml: 1200, price25ml: 2400, price50ml: 4500, img: "img/premium/nostra.jpg", customSizes: true },
+  { name: "Nostrademis", price50ml: 4500, img: "img/premium/nostra.jpg", customSizes: true },
   { name: "Oud Aromatic", price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
   { name: "Silk Musk", price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
   { name: "Musk-ul-Hind S", price3ml: 750, price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
@@ -39,8 +39,6 @@ function createProductCard(product) {
   if (product.customSizes) {
     dropdownHTML = `
       <select class="price-dropdown">
-        <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
-        <option value="${product.price25ml}">25ml - Rs ${product.price25ml}</option>
         <option value="${product.price50ml}">50ml - Rs ${product.price50ml}</option>
       </select>
     `;

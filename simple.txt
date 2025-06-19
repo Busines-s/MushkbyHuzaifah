@@ -340,3 +340,10 @@ document.getElementById("searchInput").addEventListener("input", renderProducts)
 // Initial rendering
 renderProducts();
 
+
+
+
+        <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
+        <option value="${product.price25ml}">25ml - Rs ${product.price25ml}</option>
+
+        price12ml: 1200, price25ml: 2400, 

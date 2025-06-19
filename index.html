@@ -71,11 +71,9 @@
     <main>
         <section class="banner">
   <div class="banner-content">
-    <h2>Welcome to Mushk by Huzaifah</h2>
-    <p>
-      Charge your soul with Mushk By Huzaifah
-    </p>
-    <a href="#premium-product" class="banner-btn">Explore Products</a>
+    <h2 style="font-size: 20px;">Welcome to Mushk by Huzaifah</h2>
+    <p id="autoTypeText"></p>
+    <!-- <a href="#premium-product" class="banner-btn">Explore Products</a> -->
 
   </div>
 </section>
@@ -236,6 +234,23 @@
     }
     lastScrollY = window.scrollY;
   });
+
+  const text = "Charge your soul with Mushk By Huzaifah";
+  const target = document.getElementById("autoTypeText");
+
+  let index = 0;
+
+  function typeWriter() {
+    if (index < text.length) {
+      target.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, 70); // speed of typing
+    } else {
+      target.style.borderRight = "none"; // remove cursor after complete
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeWriter);
 </script>
 
 
