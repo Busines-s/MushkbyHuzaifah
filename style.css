@@ -167,7 +167,7 @@ nav ul li a:hover {
     margin-top: 100px;
     background: linear-gradient(to right, #111, #222);
     color: #FFD700;
-    padding: 60px 20px;
+    padding: 60px 20px 20px 20px;
     text-align: center;
     border-bottom: 3px solid #FFD700;
 }

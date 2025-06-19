@@ -1,6 +1,6 @@
 
 const premiumProducts = [
-  { name: "Nostrademis", price50ml: 4500, img: "img/premium/nostra.jpg", customSizes: true },
+  { name: "Nostrademis 15% off", price50ml: 3825, img: "img/premium/nostra.jpg", customSizes: true },
   { name: "Oud Aromatic", price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
   { name: "Silk Musk", price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
   { name: "Musk-ul-Hind S", price3ml: 750, price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
@@ -25,24 +25,29 @@ const classicProducts = [
   { name: "Havoc", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Havoe.png" },
 ];
 const casualProducts = [
-  { name: "White Oud", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/whiteoud.jfif" },
-  { name: "Dunhil Desire", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/dunhil.jfif" },
-  { name: "Soft", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/soft.png" },
-  { name: "Ghulaf-e-Kaaba", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/ghulaf.jfif" },
-  { name: "Sabaya", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/casual/sabaya.jfif" },
+  { name: "White Oud", price12ml: 600, img: "img/casual/whiteoud.jfif" ,customSizes: true},
+  { name: "Dunhil Desire", price12ml: 600, img: "img/casual/dunhil.jfif",customSizes: true },
+  { name: "Soft", price12ml: 600, img: "img/casual/soft.png",customSizes: true },
+  { name: "Ghulaf-e-Kaaba", price12ml: 600, img: "img/casual/ghulaf.jfif" ,customSizes: true},
+  { name: "Sabaya", price12ml: 600, img: "img/casual/sabaya.jfif" ,customSizes: true},
 ];
 
 
 function createProductCard(product) {
   let dropdownHTML = '';
 
-  if (product.customSizes) {
+  if (product.customSizes && product.price50ml ) {
     dropdownHTML = `
       <select class="price-dropdown">
         <option value="${product.price50ml}">50ml - Rs ${product.price50ml}</option>
       </select>
     `;
-  } else {
+  }else if(product.customSizes && product.price12ml){
+    dropdownHTML = `<select class="price-dropdown">
+        <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
+      </select> `;
+  }
+   else {
     dropdownHTML = `
       <select class="price-dropdown">
         <option value="${product.price3ml}">3ml - Rs ${product.price3ml}</option>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="order2.css">
+    <link rel="stylesheet" href="order.css">
 </head>
 <body>
     <header>
@@ -32,20 +32,14 @@
                 <label for="productName">Product Name:</label>
                 <input type="text" id="productName" name="entry.384081932" readonly>
 
-                <label for="bottleOffer">Stylish Bottle:</label>
-                <select id="bottleOffer" onchange="showbottlepricefun()" name="entry.2007186184">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
 
-                <div id="showbottleprice">
-                    <label for="bottlePrice">Stylish Bottle Price:</label>
-                    <select id="bottlePrice" onchange="calculateSum()" name="entry.321795869">
-                        <option value="0">empty</option>
-                        <option value="130">3ml (130 Rs)</option>
-                        <option value="180">6ml (180 Rs)</option>
-                        <option value="230">12ml (230 Rs)</option>
-                    </select>
+                <div id="discountDiv">
+                <label for="discountEligibility">Eligibility for 10% Discount:</label>
+                <select id="discountEligibility" name="entry.321795869" onchange="handleDiscount()">
+                    <option value="">Select</option>
+                    <option value="hafiz">I am a complete Hafiz-e-Quran</option>
+                    <option value="orphan">I am under 20 and one of my parents is deceased</option>
+                </select>
                 </div>
 
                 <label for="price">Price (Rs):</label>
@@ -86,84 +80,88 @@
             <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
         </section>
     </main>
-
+    <div class="back">
+        <a href="index.html">Go Back</a>
+    </div>
     <footer>
                 <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>        
 
     </footer>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const productName = params.get('product');
-        const price = params.get('price');
-        // Set today's date in the date input
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('orderDate').value = today;
+    // Read URL parameters for product and price
+    const params = new URLSearchParams(window.location.search);
+    const productName = params.get('product');
+    const price = parseFloat(params.get('price') || "0");
 
-        document.getElementById('productName').value = productName || "N/A";
-        document.getElementById('price').value = price || "0";
+    // Set date to today
+    document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('productName').value = productName || "N/A";
+    document.getElementById('price').value = price;
 
-        const quantityInput = document.getElementById('quantity');
-        const totalPriceInput = document.getElementById('totalPrice');
-        const bottleOffer = document.getElementById('bottleOffer');
-        const bottlePrice = document.getElementById('bottlePrice');
-        const paymentMethod = document.getElementById('paymentMethod');
+    // Element references
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceInput = document.getElementById('totalPrice');
+    const discountSelect = document.getElementById('discountEligibility');
+    const paymentMethod = document.getElementById('paymentMethod');
 
-        function updateTotalPrice() {
-            const quantity = parseInt(quantityInput.value, 10) || 1;
-            totalPriceInput.value = quantity * parseFloat(price || "0");
+    let discountRate = 0;
+
+    // Unified total calculation function
+    function calculateTotalWithDiscount() {
+        const quantity = parseInt(quantityInput.value, 10) || 1;
+        const total = price * quantity;
+        const discountedTotal = total - (total * discountRate);
+        totalPriceInput.value = discountedTotal.toFixed(2);
+    }
+
+    // Handle discount selection
+    discountSelect.addEventListener('change', () => {
+        const option = discountSelect.value;
+
+        if (option === 'hafiz') {
+            discountRate = 0.10;
+            alert("🎉 Congratulations! You received a 10% discount on this product.");
+        } else if (option === 'orphan') {
+            discountRate = 0.10;
+            alert("🎉 Congratulations! You received a 10% discount on this product.\nMay Allah have mercy on your parents.");
+        } else {
+            discountRate = 0;
         }
 
-        quantityInput.addEventListener('input', updateTotalPrice);
-        updateTotalPrice();
+        calculateTotalWithDiscount();
+    });
 
-        function showbottlepricefun() {
-            var needbottle = bottleOffer.value;
-            var bottlepriceDiv = document.getElementById('showbottleprice');
-            if (needbottle === 'yes') {
-                bottlepriceDiv.style.display = 'block';
-            } else {
-                bottlepriceDiv.style.display = 'none';
-            }
-        }
-        function handlePaymentMethodChange() {
-            var payment = paymentMethod.value;
-            var numbershow = document.getElementById('onlinepaymentnumber');
+    // Recalculate when quantity changes
+    quantityInput.addEventListener('input', calculateTotalWithDiscount);
+
+    // Initial calculation
+    calculateTotalWithDiscount();
+
+    // Handle payment method visibility
+    function handlePaymentMethodChange() {
+        const payment = paymentMethod.value;
+        const numbershow = document.getElementById('onlinepaymentnumber');
         if (payment === 'Online payment') {
             numbershow.style.display = 'block';
         } else {
-        numbershow.style.display = 'none';
-        alert("Payment on delivery is currently unavailable. Please use online payment.");
-        paymentMethod.value = ""; // Reset to default
-    }
-}
-
-
-        // function showmobilenumber() {
-        //     var payment = paymentMethod.value;
-        //     var numbershow = document.getElementById('onlinepaymentnumber');
-        //     if (payment === 'Online payment') {
-        //         numbershow.style.display = 'block';
-        //     } else {
-        //         numbershow.style.display = 'none';
-        //     }
-        // }
-
-        function calculateSum() {
-            let num1 = parseFloat(document.getElementById('bottlePrice').value) || 0;
-            let num2 = parseFloat(document.getElementById('totalPrice').value) || 0;
-            document.getElementById('totalPrice').value = num1 + num2;
+            numbershow.style.display = 'none';
+            alert("Payment on delivery is currently unavailable. Please use online payment.");
+            paymentMethod.value = "";
         }
+    }
 
-        document.getElementById("custom-form").onsubmit = function(event) {
-            event.preventDefault();
-            this.target = "hidden_iframe";
-            this.submit();
-            setTimeout(() => {
-                document.getElementById("custom-form").style.display = "none";
-                document.getElementById("confirmation-message").style.display = "block";
-            }, 500);
-        };
-    </script>
+    // Handle form submission
+    document.getElementById("custom-form").onsubmit = function(event) {
+        event.preventDefault();
+        this.target = "hidden_iframe";
+        this.submit();
+        setTimeout(() => {
+            document.getElementById("custom-form").style.display = "none";
+            document.getElementById("confirmation-message").style.display = "block";
+        }, 500);
+    };
+</script>
+
 </body>
 </html>
