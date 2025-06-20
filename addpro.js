@@ -25,11 +25,11 @@ const classicProducts = [
   { name: "Havoc", price3ml: 160, price6ml: 330, price12ml: 600, img: "img/classic/Havoe.png" },
 ];
 const casualProducts = [
-  { name: "White Oud", price12ml: 600, img: "img/casual/whiteoud.jfif" ,customSizes: true},
-  { name: "Dunhil Desire", price12ml: 600, img: "img/casual/dunhil.jfif",customSizes: true },
-  { name: "Soft", price12ml: 600, img: "img/casual/soft.png",customSizes: true },
-  { name: "Ghulaf-e-Kaaba", price12ml: 600, img: "img/casual/ghulaf.jfif" ,customSizes: true},
-  { name: "Sabaya", price12ml: 600, img: "img/casual/sabaya.jfif" ,customSizes: true},
+  { name: "White Oud", price6ml: 330, img: "img/casual/whiteoud.jfif", customSizes: true },
+  { name: "Dunhil Desire", price6ml: 330, img: "img/casual/dunhil.jfif", customSizes: true },
+  { name: "Soft", price6ml: 330, img: "img/casual/soft.png", customSizes: true },
+  { name: "Ghulaf-e-Kaaba", price6ml: 330, img: "img/casual/ghulaf.jfif", customSizes: true },
+  { name: "Sabaya", price6ml: 330, img: "img/casual/sabaya.jfif", customSizes: true },
 ];
 
 
@@ -42,9 +42,9 @@ function createProductCard(product) {
         <option value="${product.price50ml}">50ml - Rs ${product.price50ml}</option>
       </select>
     `;
-  }else if(product.customSizes && product.price12ml){
+  }else if(product.customSizes && product.price6ml){
     dropdownHTML = `<select class="price-dropdown">
-        <option value="${product.price12ml}">12ml - Rs ${product.price12ml}</option>
+        <option value="${product.price6ml}">6ml - Rs ${product.price6ml}</option>
       </select> `;
   }
    else {
