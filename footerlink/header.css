@@ -1,0 +1,22 @@
+main{
+    margin-top: 100px;
+}
+#mainHeader nav{
+    margin-top: 0px;
+    align-items: center;
+}
+#mainHeader nav a{
+    text-align: center;
+    /* color: blue; */
+}
+@media (max-width:400px) {
+    
+    #mainHeader{
+        height: 115px;
+        
+    }
+    h1{
+        font-size: 20px;
+    }
+    
+}
