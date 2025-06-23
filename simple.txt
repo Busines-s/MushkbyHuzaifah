@@ -347,3 +347,4 @@ renderProducts();
         <option value="${product.price25ml}">25ml - Rs ${product.price25ml}</option>
 
         price12ml: 1200, price25ml: 2400, 
+        3ml 180 6ml 200 12ml 240

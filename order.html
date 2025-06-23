@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="order.css">
 </head>
+
 <body>
     <header>
         <h1 class="headcenter">Order Confirmation</h1>
@@ -15,31 +17,44 @@
     <main>
         <section id="order-section">
             <h2 class="headcenter">Complete Your Order</h2>
-            <form id="custom-form" 
+            <form id="custom-form"
                 action="https://docs.google.com/forms/d/e/1FAIpQLSexIThQrwIiuAP5sPDzuEKuQTpPkMp3v5xVBwFLNqrgZ3jlEw/formResponse"
-                method="POST"
-                target="hidden_iframe">
+                method="POST" target="hidden_iframe">
 
                 <label for="userName">Your Name:</label>
                 <input type="text" id="userName" name="entry.586157292" placeholder="Enter your name" required>
 
                 <label for="address">Your Address:</label>
-                <textarea id="address" name="entry.865340220" placeholder="Enter your address" rows="3" required></textarea>
+                <textarea id="address" name="entry.865340220" placeholder="Enter your address" rows="3"
+                    required></textarea>
 
                 <label for="mobile">Mobile Number:</label>
                 <input type="number" id="mobile" name="entry.37859679" placeholder="Enter your mobile number" required>
 
                 <label for="productName">Product Name:</label>
                 <input type="text" id="productName" name="entry.384081932" readonly>
-
-
-                <div id="discountDiv">
-                <label for="discountEligibility">Eligibility for 10% Discount:</label>
-                <select id="discountEligibility" name="entry.321795869" onchange="handleDiscount()">
-                    <option value="">Select</option>
-                    <option value="hafiz">I am a complete Hafiz-e-Quran</option>
-                    <option value="orphan">I am under 20 and one of my parents is deceased</option>
+                <label for="stylishBottle">Do you want a stylish bottle?</label>
+                <select id="stylishBottle" name="stylishBottle"  name="entry.321795869" onchange="toggleSizeOptions()">
+                    <option value="no" selected>No</option>
+                    <option value="yes">Yes</option>
                 </select>
+
+                <!-- Hidden Div for Size Option -->
+                <div id="sizeOption" style="display: none; margin-top: 10px;">
+                    <label for="bottleSize">Select Bottle Size:</label>
+                    <select name="bottleSize" id="bottleSize">
+                        <option value="3ml">3ml</option>
+                        <option value="6ml">6ml</option>
+                        <option value="12ml">12ml</option>
+                    </select>
+                </div>
+                <div id="discountDiv">
+                    <label for="discountEligibility">Eligibility for 10% Discount:</label>
+                    <select id="discountEligibility"  onchange="handleDiscount()">
+                        <option value="">Select</option>
+                        <option value="hafiz">I am a complete Hafiz-e-Quran</option>
+                        <option value="orphan">I am under 20 and one of my parents is deceased</option>
+                    </select>
                 </div>
 
                 <label for="price">Price (Rs):</label>
@@ -60,7 +75,7 @@
                     <option value="Payment on delivery" disabled>Payment on delivery (Currently Unavailable)</option>
                     <option value="Online payment">Online payment</option>
                 </select>
-                
+
 
                 <div id="onlinepaymentnumber">
                     <h5 style="color: black; font-size: 15px;">Jazzcash at</h5>
@@ -72,7 +87,8 @@
 
             <div id="confirmation-message" style="display: none; text-align: center; margin-top: 20px;">
                 <h2>Order Confirmed ✅</h2>
-                <p>"Your payment will be processed once you receive a confirmation message from us via WhatsApp or email."</p>
+                <p>"Your payment will be processed once you receive a confirmation message from us via WhatsApp or
+                    email."</p>
                 <p>Thanks for shopping with us!</p>
                 <a href="index.html">Go Back to Homepage</a>
             </div>
@@ -84,84 +100,91 @@
         <a href="index.html">Go Back</a>
     </div>
     <footer>
-                <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>        
+        <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>
 
     </footer>
 
     <script>
-    // Read URL parameters for product and price
-    const params = new URLSearchParams(window.location.search);
-    const productName = params.get('product');
-    const price = parseFloat(params.get('price') || "0");
-
-    // Set date to today
-    document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
-    document.getElementById('productName').value = productName || "N/A";
-    document.getElementById('price').value = price;
-
-    // Element references
-    const quantityInput = document.getElementById('quantity');
-    const totalPriceInput = document.getElementById('totalPrice');
-    const discountSelect = document.getElementById('discountEligibility');
-    const paymentMethod = document.getElementById('paymentMethod');
-
-    let discountRate = 0;
-
-    // Unified total calculation function
-    function calculateTotalWithDiscount() {
-        const quantity = parseInt(quantityInput.value, 10) || 1;
-        const total = price * quantity;
-        const discountedTotal = total - (total * discountRate);
-        totalPriceInput.value = discountedTotal.toFixed(2);
-    }
-
-    // Handle discount selection
-    discountSelect.addEventListener('change', () => {
-        const option = discountSelect.value;
-
-        if (option === 'hafiz') {
-            discountRate = 0.10;
-            alert("🎉 Congratulations! You received a 10% discount on this product.Remember me in your Prayers");
-        } else if (option === 'orphan') {
-            discountRate = 0.10;
-            alert("🎉 Congratulations! You received a 10% discount on this product.\nMay Allah have mercy on your parents.Remember me in your precious Prayers");
-        } else {
-            discountRate = 0;
+        function toggleSizeOptions() {
+        const stylishBottle = document.getElementById("stylishBottle").value;
+        const sizeOption = document.getElementById("sizeOption");
+        sizeOption.style.display = (stylishBottle === "yes") ? "block" : "none";
         }
 
+        // Read URL parameters for product and price
+        const params = new URLSearchParams(window.location.search);
+        const productName = params.get('product');
+        const price = parseFloat(params.get('price') || "0");
+
+        // Set date to today
+        document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+        document.getElementById('productName').value = productName || "N/A";
+        document.getElementById('price').value = price;
+
+        // Element references
+        const quantityInput = document.getElementById('quantity');
+        const totalPriceInput = document.getElementById('totalPrice');
+        const discountSelect = document.getElementById('discountEligibility');
+        const paymentMethod = document.getElementById('paymentMethod');
+
+        let discountRate = 0;
+
+        // Unified total calculation function
+        function calculateTotalWithDiscount() {
+            const quantity = parseInt(quantityInput.value, 10) || 1;
+            const total = price * quantity;
+            const discountedTotal = total - (total * discountRate);
+            totalPriceInput.value = discountedTotal.toFixed(2);
+        }
+
+        // Handle discount selection
+        discountSelect.addEventListener('change', () => {
+            const option = discountSelect.value;
+
+            if (option === 'hafiz') {
+                discountRate = 0.10;
+                alert("🎉 Congratulations! You received a 10% discount on this product.Remember me in your Prayers");
+            } else if (option === 'orphan') {
+                discountRate = 0.10;
+                alert("🎉 Congratulations! You received a 10% discount on this product.\nMay Allah have mercy on your parents.Remember me in your precious Prayers");
+            } else {
+                discountRate = 0;
+            }
+
+            calculateTotalWithDiscount();
+        });
+
+        // Recalculate when quantity changes
+        quantityInput.addEventListener('input', calculateTotalWithDiscount);
+
+        // Initial calculation
         calculateTotalWithDiscount();
-    });
 
-    // Recalculate when quantity changes
-    quantityInput.addEventListener('input', calculateTotalWithDiscount);
-
-    // Initial calculation
-    calculateTotalWithDiscount();
-
-    // Handle payment method visibility
-    function handlePaymentMethodChange() {
-        const payment = paymentMethod.value;
-        const numbershow = document.getElementById('onlinepaymentnumber');
-        if (payment === 'Online payment') {
-            numbershow.style.display = 'block';
-        } else {
-            numbershow.style.display = 'none';
-            alert("Payment on delivery is currently unavailable. Please use online payment.");
-            paymentMethod.value = "";
+        // Handle payment method visibility
+        function handlePaymentMethodChange() {
+            const payment = paymentMethod.value;
+            const numbershow = document.getElementById('onlinepaymentnumber');
+            if (payment === 'Online payment') {
+                numbershow.style.display = 'block';
+            } else {
+                numbershow.style.display = 'none';
+                alert("Payment on delivery is currently unavailable. Please use online payment.");
+                paymentMethod.value = "";
+            }
         }
-    }
 
-    // Handle form submission
-    document.getElementById("custom-form").onsubmit = function(event) {
-        event.preventDefault();
-        this.target = "hidden_iframe";
-        this.submit();
-        setTimeout(() => {
-            document.getElementById("custom-form").style.display = "none";
-            document.getElementById("confirmation-message").style.display = "block";
-        }, 500);
-    };
-</script>
+        // Handle form submission
+        document.getElementById("custom-form").onsubmit = function (event) {
+            event.preventDefault();
+            this.target = "hidden_iframe";
+            this.submit();
+            setTimeout(() => {
+                document.getElementById("custom-form").style.display = "none";
+                document.getElementById("confirmation-message").style.display = "block";
+            }, 500);
+        };
+    </script>
 
 </body>
+
 </html>
