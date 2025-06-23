@@ -2,189 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Details</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="order.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="order.css" />
 </head>
 
 <body>
-    <header>
-        <h1 class="headcenter">Order Confirmation</h1>
-    </header>
+  <header>
+    <h1 class="headcenter">Order Confirmation</h1>
+  </header>
 
-    <main>
-        <section id="order-section">
-            <h2 class="headcenter">Complete Your Order</h2>
-            <form id="custom-form"
-                action="https://docs.google.com/forms/d/e/1FAIpQLSexIThQrwIiuAP5sPDzuEKuQTpPkMp3v5xVBwFLNqrgZ3jlEw/formResponse"
-                method="POST" target="hidden_iframe">
+  <main>
+    <section id="order-section">
+      <h2 class="headcenter">Complete Your Order</h2>
+      <form id="custom-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSexIThQrwIiuAP5sPDzuEKuQTpPkMp3v5xVBwFLNqrgZ3jlEw/formResponse"
+        method="POST" target="hidden_iframe">
 
-                <label for="userName">Your Name:</label>
-                <input type="text" id="userName" name="entry.586157292" placeholder="Enter your name" required>
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" name="entry.586157292" placeholder="Enter your name" required />
 
-                <label for="address">Your Address:</label>
-                <textarea id="address" name="entry.865340220" placeholder="Enter your address" rows="3"
-                    required></textarea>
+        <label for="address">Your Address:</label>
+        <textarea id="address" name="entry.865340220" placeholder="Enter your address" rows="3" required></textarea>
 
-                <label for="mobile">Mobile Number:</label>
-                <input type="number" id="mobile" name="entry.37859679" placeholder="Enter your mobile number" required>
+        <label for="mobile">Mobile Number:</label>
+        <input type="number" id="mobile" name="entry.37859679" placeholder="Enter your mobile number" required />
 
-                <label for="productName">Product Name:</label>
-                <input type="text" id="productName" name="entry.384081932" readonly>
-                <label for="stylishBottle">Do you want a stylish bottle?</label>
-                <select id="stylishBottle" name="stylishBottle"  name="entry.321795869" onchange="toggleSizeOptions()">
-                    <option value="no" selected>No</option>
-                    <option value="yes">Yes</option>
-                </select>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="entry.384081932" readonly />
 
-                <!-- Hidden Div for Size Option -->
-                <div id="sizeOption" style="display: none; margin-top: 10px;">
-                    <label for="bottleSize">Select Bottle Size:</label>
-                    <select name="bottleSize" id="bottleSize">
-                        <option value="3ml">3ml</option>
-                        <option value="6ml">6ml</option>
-                        <option value="12ml">12ml</option>
-                    </select>
-                </div>
-                <div id="discountDiv">
-                    <label for="discountEligibility">Eligibility for 10% Discount:</label>
-                    <select id="discountEligibility"  onchange="handleDiscount()">
-                        <option value="">Select</option>
-                        <option value="hafiz">I am a complete Hafiz-e-Quran</option>
-                        <option value="orphan">I am under 20 and one of my parents is deceased</option>
-                    </select>
-                </div>
+        <label for="stylishBottle">Stylish bottle</label>
+        <select id="stylishBottle" name="entry.2007186184" onchange="toggleSizeOptions()">
+          <option value="no" selected>No</option>
+          <option value="yes">Yes</option>
+        </select>
 
-                <label for="price">Price (Rs):</label>
-                <input type="number" id="price" name="entry.400" readonly>
+        <!-- Hidden Div for Size Option -->
+        <div id="sizeOption" style="display: none; margin-top: 10px;">
+          <label for="bottleSize">Select Bottle Size:</label>
+          <select name="entry.658302163" id="bottleSize">
+            <option value="3ml">3ml</option>
+            <option value="6ml">6ml</option>
+            <option value="12ml">12ml</option>
+          </select>
+        </div>
 
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="entry.1177976082" min="1" value="1" required>
+        <div id="discountDiv">
+          <label for="discountEligibility">Eligibility for 10% Discount:</label>
+          <select id="discountEligibility" name="entry.2045144757" onchange="handleDiscount()">
+            <option value="">Select</option>
+            <option value="I am a complete Hafiz-e-Quran">I am a complete Hafiz-e-Quran</option>
+            <option value="I am under 20 and one of my parents is deceased">
+              I am under 20 and one of my parents is deceased
+            </option>
+          </select>
+        </div>
 
-                <label for="totalPrice">Total Price (Rs):</label>
-                <input type="number" id="totalPrice" name="entry.2037355945" readonly>
+        <label for="price">Price (Rs):</label>
+        <input type="number" id="price" name="entry.321795869" readonly />
 
-                <label for="orderDate">Order Date:</label>
-                <input type="date" id="orderDate" name="entry.780854365" required readonly>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="entry.1177976082" min="1" value="1" required />
 
-                <label for="paymentMethod">Payment Method:</label>
-                <select id="paymentMethod" onchange="handlePaymentMethodChange()" name="entry.2134052494">
-                    <option value="" disabled selected>Select payment method</option>
-                    <option value="Payment on delivery" disabled>Payment on delivery (Currently Unavailable)</option>
-                    <option value="Online payment">Online payment</option>
-                </select>
+        <label for="totalPrice">Total Price (Rs):</label>
+        <input type="number" id="totalPrice" name="entry.2037355945" readonly />
 
+        <label for="orderDate">Order Date:</label>
+        <input type="date" id="orderDate" name="entry.780854365" required readonly />
 
-                <div id="onlinepaymentnumber">
-                    <h5 style="color: black; font-size: 15px;">Jazzcash at</h5>
-                    <h5 style="color: black; font-size: 15px;">+923334344513</h5>
-                </div>
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" name="entry.2134052494" onchange="handlePaymentMethodChange()">
+          <option value="" disabled selected>Select payment method</option>
+          <option value="Payment on delivery" disabled>Payment on delivery (Currently Unavailable)</option>
+          <option value="Online payment">Online payment</option>
+        </select>
 
-                <button type="submit">Submit</button>
-            </form>
+        <div id="onlinepaymentnumber">
+          <h5 style="color: black; font-size: 15px;">Jazzcash at</h5>
+          <h5 style="color: black; font-size: 15px;">+923334344513</h5>
+        </div>
 
-            <div id="confirmation-message" style="display: none; text-align: center; margin-top: 20px;">
-                <h2>Order Confirmed ✅</h2>
-                <p>"Your payment will be processed once you receive a confirmation message from us via WhatsApp or
-                    email."</p>
-                <p>Thanks for shopping with us!</p>
-                <a href="index.html">Go Back to Homepage</a>
-            </div>
+        <button type="submit">Submit</button>
+      </form>
 
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
-        </section>
-    </main>
-    <div class="back">
-        <a href="index.html">Go Back</a>
-    </div>
-    <footer>
-        <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>
+      <div id="confirmation-message" style="display: none; text-align: center; margin-top: 20px;">
+        <h2>Order Confirmed ✅</h2>
+        <p>
+          "Your payment will be processed once you receive a confirmation message from us via WhatsApp or email."
+        </p>
+        <p>Thanks for shopping with us!</p>
+        <a href="index.html">Go Back to Homepage</a>
+      </div>
 
-    </footer>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
+    </section>
+  </main>
 
-    <script>
-        function toggleSizeOptions() {
-        const stylishBottle = document.getElementById("stylishBottle").value;
-        const sizeOption = document.getElementById("sizeOption");
-        sizeOption.style.display = (stylishBottle === "yes") ? "block" : "none";
-        }
+  <div class="back">
+    <a href="index.html">Go Back</a>
+  </div>
 
-        // Read URL parameters for product and price
-        const params = new URLSearchParams(window.location.search);
-        const productName = params.get('product');
-        const price = parseFloat(params.get('price') || "0");
+  <footer>
+    <p>&copy; 2025 Mushk-by-Huzaifah. All rights reserved | @ sheri.in design</p>
+  </footer>
 
-        // Set date to today
-        document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
-        document.getElementById('productName').value = productName || "N/A";
-        document.getElementById('price').value = price;
+  <script>
+    function toggleSizeOptions() {
+      const stylishBottle = document.getElementById("stylishBottle").value;
+      const sizeOption = document.getElementById("sizeOption");
+      sizeOption.style.display = (stylishBottle === "yes") ? "block" : "none";
+    }
 
-        // Element references
-        const quantityInput = document.getElementById('quantity');
-        const totalPriceInput = document.getElementById('totalPrice');
-        const discountSelect = document.getElementById('discountEligibility');
-        const paymentMethod = document.getElementById('paymentMethod');
+    const params = new URLSearchParams(window.location.search);
+    const productName = params.get('product');
+    const price = parseFloat(params.get('price') || "0");
 
-        let discountRate = 0;
+    document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('productName').value = productName || "N/A";
+    document.getElementById('price').value = price;
 
-        // Unified total calculation function
-        function calculateTotalWithDiscount() {
-            const quantity = parseInt(quantityInput.value, 10) || 1;
-            const total = price * quantity;
-            const discountedTotal = total - (total * discountRate);
-            totalPriceInput.value = discountedTotal.toFixed(2);
-        }
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceInput = document.getElementById('totalPrice');
+    const discountSelect = document.getElementById('discountEligibility');
+    const paymentMethod = document.getElementById('paymentMethod');
 
-        // Handle discount selection
-        discountSelect.addEventListener('change', () => {
-            const option = discountSelect.value;
+    let discountRate = 0;
 
-            if (option === 'hafiz') {
-                discountRate = 0.10;
-                alert("🎉 Congratulations! You received a 10% discount on this product.Remember me in your Prayers");
-            } else if (option === 'orphan') {
-                discountRate = 0.10;
-                alert("🎉 Congratulations! You received a 10% discount on this product.\nMay Allah have mercy on your parents.Remember me in your precious Prayers");
-            } else {
-                discountRate = 0;
-            }
+    function calculateTotalWithDiscount() {
+      const quantity = parseInt(quantityInput.value, 10) || 1;
+      const total = price * quantity;
+      const discountedTotal = total - (total * discountRate);
+      totalPriceInput.value = discountedTotal.toFixed(2);
+    }
 
-            calculateTotalWithDiscount();
-        });
+    discountSelect.addEventListener('change', () => {
+      const option = discountSelect.value;
 
-        // Recalculate when quantity changes
-        quantityInput.addEventListener('input', calculateTotalWithDiscount);
+      if (option === 'I am a complete Hafiz-e-Quran') {
+        discountRate = 0.10;
+        alert("🎉 Congratulations! You received a 10% discount on this product. Remember me in your prayers.");
+      } else if (option === 'I am under 20 and one of my parents is deceased') {
+        discountRate = 0.10;
+        alert("🎉 Congratulations! You received a 10% discount on this product.\nMay Allah have mercy on your parents. Remember me in your precious prayers.");
+      } else {
+        discountRate = 0;
+      }
 
-        // Initial calculation
-        calculateTotalWithDiscount();
+      calculateTotalWithDiscount();
+    });
 
-        // Handle payment method visibility
-        function handlePaymentMethodChange() {
-            const payment = paymentMethod.value;
-            const numbershow = document.getElementById('onlinepaymentnumber');
-            if (payment === 'Online payment') {
-                numbershow.style.display = 'block';
-            } else {
-                numbershow.style.display = 'none';
-                alert("Payment on delivery is currently unavailable. Please use online payment.");
-                paymentMethod.value = "";
-            }
-        }
+    quantityInput.addEventListener('input', calculateTotalWithDiscount);
 
-        // Handle form submission
-        document.getElementById("custom-form").onsubmit = function (event) {
-            event.preventDefault();
-            this.target = "hidden_iframe";
-            this.submit();
-            setTimeout(() => {
-                document.getElementById("custom-form").style.display = "none";
-                document.getElementById("confirmation-message").style.display = "block";
-            }, 500);
-        };
-    </script>
+    calculateTotalWithDiscount();
 
+    function handlePaymentMethodChange() {
+      const payment = paymentMethod.value;
+      const numbershow = document.getElementById('onlinepaymentnumber');
+      if (payment === 'Online payment') {
+        numbershow.style.display = 'block';
+      } else {
+        numbershow.style.display = 'none';
+        alert("Payment on delivery is currently unavailable. Please use online payment.");
+        paymentMethod.value = "";
+      }
+    }
+
+    document.getElementById("custom-form").onsubmit = function (event) {
+      event.preventDefault();
+      this.target = "hidden_iframe";
+      this.submit();
+      setTimeout(() => {
+        document.getElementById("custom-form").style.display = "none";
+        document.getElementById("confirmation-message").style.display = "block";
+      }, 500);
+    };
+  </script>
 </body>
 
 </html>
