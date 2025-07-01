@@ -1,10 +1,15 @@
 
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+
 const premiumProducts = [
   { name: "Nostrademis 15% off 4500 ❌ ", price50ml: 3825, img: "img/premium/nostra.jpg", customSizes: true },
   { name: "Oud Aromatic", price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
   { name: "Silk Musk", price3ml: 700, price6ml: 1150, price12ml: 2100, img: "img/premium/silkmusk.jpeg" },
   { name: "Musk-ul-Hind S", price3ml: 750, price6ml: 1500, price12ml: 3000, img: "img/premium/muskulhind.jpg" },
-  { name: "Ameer-ul-Oud", price3ml: 270, price6ml: 550, price12ml: 1000, img: "img/premium/Ameer-ul-oud.jpeg" },
+  { name: "Ameer-ul-Oud", price3ml: 270, price6ml: 550, price12ml: 1000, img: "img/premium/ameeruloud.png" },
   { name: "Jannan", price3ml: 250, price6ml: 500, price12ml: 900, img: "img/premium/jannan.jpeg" },
   { name: "Versache Pink", price3ml: 250, price6ml: 500, price12ml: 900, img: "img/premium/versace.jpeg" },
   { name: "Oud-e-Junaid", price3ml: 260, price6ml: 520, price12ml: 950, img: "img/premium/oud-e-junaid.jpeg" },
@@ -77,17 +82,18 @@ function redirectToOrderPageWithDropdown(productName) {
 }
 
 
-
 function renderProducts() {
   const query = document.getElementById("searchInput").value.toLowerCase();
 
-  const filteredPremium = premiumProducts.filter(p => p.name.toLowerCase().includes(query));
-  const filteredClassic = classicProducts.filter(p => p.name.toLowerCase().includes(query));
-  const filteredCasual = casualProducts.filter(p => p.name.toLowerCase().includes(query));
+  const filteredPremium = shuffleArray(premiumProducts.filter(p => p.name.toLowerCase().includes(query)));
+  const filteredClassic = shuffleArray(classicProducts.filter(p => p.name.toLowerCase().includes(query)));
+  const filteredCasual = shuffleArray(casualProducts.filter(p => p.name.toLowerCase().includes(query)));
 
   document.getElementById("premiumList").innerHTML = filteredPremium.map(createProductCard).join("");
   document.getElementById("classicList").innerHTML = filteredClassic.map(createProductCard).join("");
   document.getElementById("casualList").innerHTML = filteredCasual.map(createProductCard).join("");
+
+  AOS?.refresh(); // Only if AOS is used (optional)
 }
 
 

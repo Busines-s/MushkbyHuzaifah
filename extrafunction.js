@@ -19,7 +19,7 @@ let lastScrollY = window.scrollY;
     if (index < text.length) {
       target.innerHTML += text.charAt(index);
       index++;
-      setTimeout(typeWriter, 70); // speed of typing
+      setTimeout(typeWriter, 50); // speed of typing
     } else {
       target.style.borderRight = "none"; // remove cursor after complete
     }
