@@ -1,9 +1,3 @@
-
-function shuffleArray(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-
 const premiumProducts = [
   { name: "Nostrademis 15% off 4500 ❌ ", price50ml: 3825, img: "img/premium/nostra.jpg", customSizes: true },
   { name: "Oud Aromatic", price3ml: 700, price6ml: 1200, price12ml: 2200, img: "img/premium/oudaro.jpeg" },
@@ -82,18 +76,17 @@ function redirectToOrderPageWithDropdown(productName) {
 }
 
 
+
 function renderProducts() {
   const query = document.getElementById("searchInput").value.toLowerCase();
 
-  const filteredPremium = shuffleArray(premiumProducts.filter(p => p.name.toLowerCase().includes(query)));
-  const filteredClassic = shuffleArray(classicProducts.filter(p => p.name.toLowerCase().includes(query)));
-  const filteredCasual = shuffleArray(casualProducts.filter(p => p.name.toLowerCase().includes(query)));
+  const filteredPremium = premiumProducts.filter(p => p.name.toLowerCase().includes(query));
+  const filteredClassic = classicProducts.filter(p => p.name.toLowerCase().includes(query));
+  const filteredCasual = casualProducts.filter(p => p.name.toLowerCase().includes(query));
 
   document.getElementById("premiumList").innerHTML = filteredPremium.map(createProductCard).join("");
   document.getElementById("classicList").innerHTML = filteredClassic.map(createProductCard).join("");
   document.getElementById("casualList").innerHTML = filteredCasual.map(createProductCard).join("");
-
-  AOS?.refresh(); // Only if AOS is used (optional)
 }
 
 
@@ -101,5 +94,3 @@ document.getElementById("searchInput").addEventListener("input", renderProducts)
 
 // Initial rendering
 renderProducts();
-
-
