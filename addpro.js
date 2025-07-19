@@ -30,6 +30,29 @@ const casualProducts = [
   { name: "Ghulaf-e-Kaaba", price6ml: 330, img: "img/casual/ghulaf.jfif", customSizes: true, description: "Same holy aroma with a casual feel.", lasting: "6 Hours" },
   { name: "Sabaya", price6ml: 330, img: "img/casual/sabaya.jfif", customSizes: true, description: "Casual version of the classic Sabaya. Soft and floral.", lasting: "6 Hours" },
 ];
+const organicProducts = [
+  {
+    name: "Organic Sandalwood Oil",
+    price3ml: 300,
+    price6ml: 550,
+    price12ml: 1000,
+    img: "img/casual/whiteoud.jfif",
+    description: "100% pure organic rose essential oil. Delicate and calming.",
+    lasting: "12 Hours",
+    customSizes: false
+  },
+  {
+    name: "Organic Sandalwood Oil",
+    price3ml: 400,
+    price6ml: 750,
+    price12ml: 1300,
+    img: "img/casual/whiteoud.jfif",
+    description: "Natural sandalwood extracted with care. Deep and woody.",
+    lasting: "18 Hours",
+    customSizes: false
+  }
+];
+
 
 function createProductCard(product) {
   let dropdownHTML = '';
@@ -112,14 +135,18 @@ function redirectToOrderPageWithDropdown(productName) {
 
 function renderProducts() {
   const query = document.getElementById("searchInput").value.toLowerCase();
+
   const filteredPremium = premiumProducts.filter(p => p.name.toLowerCase().includes(query));
   const filteredClassic = classicProducts.filter(p => p.name.toLowerCase().includes(query));
   const filteredCasual = casualProducts.filter(p => p.name.toLowerCase().includes(query));
+  const filteredOrganic = organicProducts.filter(p => p.name.toLowerCase().includes(query));
 
   document.getElementById("premiumList").innerHTML = filteredPremium.map(createProductCard).join("");
   document.getElementById("classicList").innerHTML = filteredClassic.map(createProductCard).join("");
   document.getElementById("casualList").innerHTML = filteredCasual.map(createProductCard).join("");
+  document.getElementById("organicList").innerHTML = filteredOrganic.map(createProductCard).join("");
 }
+
 document.getElementById("searchInput").addEventListener("input", renderProducts);
 renderProducts();
 

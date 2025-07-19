@@ -1,5 +1,3 @@
-
-
 function setupScrollButtons(listId, leftBtnClass, rightBtnClass) {
     const list = document.getElementById(listId);
     const leftBtn = document.querySelector(leftBtnClass);
@@ -12,11 +10,8 @@ function setupScrollButtons(listId, leftBtnClass, rightBtnClass) {
             return;
         }
 
-        // Right button: show if there's overflow on right
         const canScrollRight = list.scrollWidth > list.clientWidth + list.scrollLeft;
         rightBtn.style.display = canScrollRight ? 'block' : 'none';
-
-        // Left button: show if scrolled away from start
         leftBtn.style.display = list.scrollLeft > 0 ? 'block' : 'none';
     }
 
@@ -30,15 +25,14 @@ function setupScrollButtons(listId, leftBtnClass, rightBtnClass) {
 
     list.addEventListener('scroll', toggleButtons);
     window.addEventListener('resize', toggleButtons);
-
-    // Delay execution to ensure DOM is fully loaded
     setTimeout(toggleButtons, 200);
 }
 
-// Setup scroll buttons for both product sections
+// Setup scroll buttons for all product sections
 setupScrollButtons('premiumList', '.scroll-button.left.premium', '.scroll-button.right.premium');
 setupScrollButtons('classicList', '.scroll-button.left.classic', '.scroll-button.right.classic');
 setupScrollButtons('casualList', '.scroll-button.left.casual', '.scroll-button.right.casual');
+setupScrollButtons('organicList', '.scroll-button.left.organic', '.scroll-button.right.organic'); // ✅ NEW
 
 // Mobile "View More" button logic
 document.querySelectorAll('.view-more-btn').forEach(btn => {
@@ -52,19 +46,7 @@ document.querySelectorAll('.view-more-btn').forEach(btn => {
 
 // Hide extra items on mobile initially
 function applyMobileHiddenClass() {
-    const premiumList = document.getElementById('premiumList');
-    const goodList = document.getElementById('goodList');
-
-    if (window.innerWidth <= 768) {
-        premiumList.classList.add('hidden');
-        goodList.classList.add('hidden');
-    } else {
-        premiumList.classList.remove('hidden');
-        goodList.classList.remove('hidden');
-    }
-}
-function applyMobileHiddenClass() {
-    const listIds = ['premiumList', 'classicList', 'casualList'];
+    const listIds = ['premiumList', 'classicList', 'casualList', 'organicList']; // ✅ Updated
     listIds.forEach(id => {
         const list = document.getElementById(id);
         if (!list) return;
