@@ -31,26 +31,23 @@ const casualProducts = [
   { name: "Sabaya", price6ml: 330, img: "img/casual/sabaya.jfif", customSizes: true, description: "Casual version of the classic Sabaya. Soft and floral.", lasting: "6 Hours" },
 ];
 const organicProducts = [
-  {
-    name: "Organic Sandalwood Oil",
-    price3ml: 300,
-    price6ml: 550,
-    price12ml: 1000,
-    img: "img/casual/whiteoud.jfif",
-    description: "100% pure organic rose essential oil. Delicate and calming.",
-    lasting: "12 Hours",
-    customSizes: false
-  },
-  {
-    name: "Organic Sandalwood Oil",
-    price3ml: 400,
-    price6ml: 750,
-    price12ml: 1300,
-    img: "img/casual/whiteoud.jfif",
-    description: "Natural sandalwood extracted with care. Deep and woody.",
-    lasting: "18 Hours",
-    customSizes: false
-  }
+  
+  { name: "Indian Khuss", price3ml: 2000, price6ml: 4000, price12ml: 8000, img: "img/organic/indianKhuss.jpg", description: "Classic floral scent inspired by timeless traditions.", lasting: "12 Hours" },
+  { name: "Khuss Ali Ghar", price3ml: 4500, price6ml: 9000, price12ml: 18000, img: "img/organic/khussalighar.jpg", description: "Classic floral scent inspired by timeless traditions.", lasting: "12 Hours" },
+  { name: "Khuss India up", price3ml: 3000, price6ml: 6000, price12ml: 12000, img: "img/organic/khussindiaup.jpg", description: "A unique blend of earthy and floral notes, reminiscent of an Indian garden after the rain.", lasting: "12 Hours" },
+
+  { name: "Mushk-E-Hind", price3ml: 1750, price6ml: 3500, price12ml: 7000, img: "img/organic/Mushkehind.jpg", description: "A warm and inviting musk with a deep, spicy undertone, perfect for a lasting impression.", lasting: "12 Hours" },
+  { name: "Oud Combodi", price3ml: 18750, price6ml: 37500, price12ml: 75000, img: "img/organic/oudcombodi.jpg", description: "A rich and exotic Cambodian oud, offering a complex woody aroma with a hint of sweetness.", lasting: "12 Hours" },
+  { name: "Oud Hindi", price3ml: 31250, price6ml: 62500, price12ml: 125000, img: "img/organic/oudhindi.jpg", description: "A classic Indian oud, known for its strong, smoky, and resinous fragrance.", lasting: "12 Hours" },
+
+  { name: "Oud Syoufii", price3ml: 31250, price6ml: 62500, price12ml: 125000, img: "img/organic/oudsyoufii.jpg", description: "A rare and sophisticated oud with a unique blend of leathery and floral notes.", lasting: "12 Hours" },
+  { name: "Sandal", price3ml: 4500, price6ml: 9000, price12ml: 18000, img: "img/organic/sandal.jpg", description: "The timeless and soothing aroma of sandalwood, offering a creamy, woody, and calming scent.", lasting: "12 Hours" },
+  { name: "Shamaamaa1", price3ml: 4000, price6ml: 8000, price12ml: 16000, img: "img/organic/shamaamaa1.jpg", description: "A harmonious blend of floral and spicy notes, creating a uniquely comforting and traditional fragrance.", lasting: "12 Hours" },
+
+  { name: "Shamaamaa2", price3ml: 6000, price6ml: 12000, price12ml: 24000, img: "img/organic/shamaamaa2.jpg", description: "A complex and captivating fragrance, combining deep, earthy undertones with a bright, refreshing finish.", lasting: "12 Hours" },
+  { name: "Shamaamaa3", price3ml: 1375, price6ml: 2750, price12ml: 5500, img: "img/organic/shamaamaa3.jpg", description: "A luxurious and intricate blend of rare spices and blossoms, exuding an air of elegance and mystery.", lasting: "12 Hours" }
+
+  
 ];
 
 
